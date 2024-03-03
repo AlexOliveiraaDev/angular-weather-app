@@ -18,11 +18,12 @@ export class CurrentWeatherComponent implements OnInit {
   lat: string = '';
   lon: string = '';
   weatherData: any;
-  apiKey = this.weatherService.apiKey
-  weatherDescription: string = ''
-  weatherTemp: number = 0
+  apiKey = this.weatherService.apiKey;
+  weatherDescription: string = '';
+  weatherTemp: number = 0;
+  weatherIcon: string = '';
 
-  value = ''
+  value = '';
 
   ngOnInit(): void {
     this.getCoordinates();
@@ -43,7 +44,8 @@ export class CurrentWeatherComponent implements OnInit {
           this.lon = data[0].lon;
           this.getWeather(this.lat, this.lon).subscribe(data => {
             this.weatherData = data;
-            this.weatherTemp = Math.floor(data.main.temp)
+            this.weatherTemp = Math.floor(data.main.temp);
+            this.weatherIcon = data.weather[0].icon;
             switch (data.weather[0].description) {
               case 'clear sky':
                 this.weatherDescription = 'Céu limpo e sem nuvens.';
