@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
   apiKey = '1e73236f14e3ae3662acb668d8acb34d';
-  baseUrl = 'http://api.openweathermap.org/geo/1.0/direct';
+  baseUrl = 'https://api.openweathermap.org/geo/1.0/direct';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,6 @@ export class WeatherService {
     const url = `${this.baseUrl}?q=${city},${stateCode},${countryCode}&limit=${limit}&appid=${this.apiKey}`;
     return this.http.get(url);
   }
-    
+
 
 }
